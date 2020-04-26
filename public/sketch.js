@@ -2,7 +2,6 @@ var drawing = [];
 var currentPath = [];
 var brushColor;
 var canvas;
-var data;
 // var isDrawing = true;
 function setup() {
     noCanvas();
@@ -25,12 +24,12 @@ function startPath() {
 }
 
 var saveDrawing = async () => {
-    var name = document.getElementById('enter').value;
-    data = {
+    const name = document.getElementById('enter').value;
+    cons data = {
         drawing: drawing,
+        color : brushColor.color(),
         name: name
     };
-    var body;
     const options = {
         method: 'POST',// telling the kind of fetech we are using
         header: { 'Content-type': 'application.json' },
@@ -38,7 +37,7 @@ var saveDrawing = async () => {
     };
     var response = await fetch('/api', options);
     const ResData = await response.json();
-    console.log(options);
+  //  console.log(options);
 
 }
 function clearCanvas() {
@@ -58,6 +57,7 @@ function draw() {
         }
     }
     stroke(brushColor.color());
+
     noFill();
 
     for (let i = 0; i < drawing.length; i++) {
