@@ -5,8 +5,12 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
-        <script src="sketch.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js"></script>
+        <script src="https://code.jquery.com/jquery-3.5.0.min.js"
+            integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+        <script src="sketch.js"></script>
+        <link rel="stylesheet" href="style.css">
+
         <!-- <script src="./p5.dom.js"></script>
         <script src="./p5.js"></script>
         <script src="./p5.min.js"></script>
@@ -14,10 +18,28 @@
     </head>
 
     <body>
-        <div id="Canvas"></div>
-        <input type="text" placeholder="Enter name" id="enter">
-        <button id = "submit" type="submit">submit</button>
+        <div class="topnav">
+            <h1>😄 😄 😄 Welcome 😄 😄 😄 </h1>
+        </div>
+        <div class="box1">
+            <h1 class="page1">Draw with US!!!</h1>
+            <p id="p1">Hey!!! Hi I am here to collect your thoughtful painting<br />😇😇😇Let's get Started😇😇😇
+            </p>
+            <input type="text" id="name_str" placeholder="Yuor Name Please" id="enter">
+            <button id="Start" type="submit"> 🖌🖌🖌Start drawing🖌🖌🖌</button>
+        </div>
 
+        <div class="box2">
+            <h1>👇👇👇 Start Drawing 👇👇👇 </h1>
+            <div id="Canvas"></div>
+            <button id="submit" type="submit">submit</button>
+            <button id="clear" type="reset">Clean</button>
+        </div>
+
+        <div class="box3">
+            <p> ✍ ✍ ✍ Thank You For Your Such beautiful Drawing✍ ✍ ✍ </p>
+            <button type="reset" id="retry">RETRY</button>
+        </div>
     </body>
 
 </html>

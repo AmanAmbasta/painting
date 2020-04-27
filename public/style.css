@@ -1,0 +1,99 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background: #3b546d;
+
+}
+
+.topnav {
+    overflow: hidden;
+    background-color: #333;
+    text-align: center;
+}
+
+.box2 {
+    text-align: center;
+}
+
+.box1,
+.box3 {
+    width: 300px;
+    padding: 40px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #292929;
+    text-align: center;
+}
+
+h1 {
+    color: rgb(216, 223, 231);
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.box1 p,
+.box2 p,
+.box3 p {
+    color: rgb(220, 220, 220);
+    font-weight: 300;
+}
+
+.box1 input[type="text"] {
+    border: 0;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 3px solid #3498db;
+    padding: 14px 10px;
+    width: 200px;
+    outline: none;
+    color: white;
+    border-radius: 24px;
+    transition: 0.25s;
+}
+
+button {
+    border: 0;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid #2ecc71;
+    padding: 14px 20px;
+    outline: none;
+    color: white;
+    border-radius: 24px;
+    transition: 0.25s;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #2ecc71;
+}
+
+ #defaultCanvas0 {
+    position: absolute;
+    
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+} 
+
+#submit,
+#clear {
+    position: absolute;
+    top: 80%;
+    transform: translate(-60%, -60%);
+}
+
+#submit {
+    left: 60%;
+}
+
+#clear {
+    left: 40%;
+}

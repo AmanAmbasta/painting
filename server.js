@@ -1,20 +1,16 @@
 const express = require('express');
 var Datastore = require('nedb');
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 const db = new Datastore({ filename:'db/data.db' });
 db.loadDatabase();
-app.use(express.json());
+app.use(express.json({limit : '3mb'}));
 app.use(express.static('public'));
-app.get('/', (req, res) => {
-    res.send('Hello World!');
-    db.insert({name:'aman', anamil: ['mana', 12] });
 
-});
 app.post('/api',(req, res) =>{
     // reading information recives from Client as the body-parse
-    console.log(req.body);
+    // console.log(req.body);
     
     db.insert(req.body);
    

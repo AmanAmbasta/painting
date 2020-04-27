@@ -2,20 +2,40 @@ var drawing = [];
 var currentPath = [];
 var brushColor;
 var canvas;
-var data;
+var name = "";
 // var isDrawing = true;
 function setup() {
     noCanvas();
-    canvas = createCanvas(600, 600);
+    canvas = createCanvas(400, 500);
     canvas.mousePressed(startPath);
 
     brushColor = createColorPicker('#ed225d');
     brushColor.position(1, height + 5);
 
+    // Event on buttons
     var save = select('#submit');
     save.mousePressed(saveDrawing);
-    var clean = createButton("Clean");
+    var clean = select('#clear');
     clean.mousePressed(clearCanvas);
+    var nextP = select('#Start');
+    nextP.mousePressed(name_str);
+    var retry = select('#retry');
+    retry.mousePressed(() => {
+        $(".box1").show(600);
+        $(".box3").hide(500);
+        drawing = [];
+        currentPath = [];
+    });
+
+    // stitching to class page2
+    brushColor.class('box2');
+    clean.class('box2');
+    brushColor.id('color');
+    canvas.class('box2');
+
+    // hiding the next div
+    $(".box2").hide();
+    $(".box3").hide();
 }
 
 function startPath() {
@@ -23,27 +43,35 @@ function startPath() {
     currentPath = [];
     drawing.push(currentPath);
 }
-
-var saveDrawing = async () => {
-    var name = document.getElementById('enter').value;
-    data = {
-        drawing: drawing,
-        name: name
-    };
-    var body;
-    const options = {
-        method: 'POST',// telling the kind of fetech we are using
-        header: { 'Content-type': 'application.json' },
-        body: JSON.stringify(data) //Converts a JavaScript value to a JavaScript Object Notation (JSON) string
-    };
-    var response = await fetch('/api', options);
-    const ResData = await response.json();
-    console.log(options);
-
+function name_str() {
+    name = document.getElementById('name_str').value;
+    $(".box1").hide(500)
+    // $(".page1").toggle(500);
+    $(".box2").toggle(600);
 }
 function clearCanvas() {
     drawing = [];
     currentPath = [];
+}
+var saveDrawing = async () => {
+    $(".box2").toggle(600);
+    $(".box3").toggle(600);
+    const data = {
+        drawing: drawing,
+        color: brushColor.color(),
+        name: name
+    };
+    const options = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+    };
+    // console.log(options);
+
+
+    const response = await fetch('/api', options);
+    const json = await response.json();
+
 }
 
 function draw() {
@@ -53,11 +81,12 @@ function draw() {
             x: mouseX,
             y: mouseY
         };
-        if (point.x < 600 && point.y < 600 && point.x > 0 && point.y > 0) {
+        if (point.x < width && point.y < height && point.x > 0 && point.y > 0) {
             currentPath.push(point);
         }
     }
     stroke(brushColor.color());
+
     noFill();
 
     for (let i = 0; i < drawing.length; i++) {
